@@ -10,6 +10,20 @@ import UIKit
 
 class AddNewPokemonViewController: UIViewController {
 
+   
+    @IBOutlet weak var newPokemonTextField: UITextField!
+    
+    @IBOutlet weak var longitudeTextField: UITextField!
+    
+    
+    @IBOutlet weak var latitudeTextField: UITextField!
+    
+    
+    
+    @IBAction func saveNewPokemonButtonPressed() {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
