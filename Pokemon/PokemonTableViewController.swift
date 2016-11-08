@@ -24,14 +24,13 @@ class PokemonTableViewController: UITableViewController {
         
         //Create URL from JSON URL
         let url = URL(string: pokemonURL)
-        
         URLSession.shared.dataTask(with: url!) { (data: Data?, response: URLResponse?, error: Error? ) in
             
-            let result = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
+        let result = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
         // Loop JSON Result
         for item in result {
                 
-            let pokemon = Pokemon()
+        let pokemon = Pokemon()
             pokemon.id = item["id"] as! Int!
             pokemon.name = item["name"] as! String!
             pokemon.imageURL = item["imageURL"] as! String!
@@ -39,7 +38,7 @@ class PokemonTableViewController: UITableViewController {
             self.pokemons.append(pokemon)
            
             }
-            
+            //Main is the UI Thread
             DispatchQueue.main.sync {
                 self.tableView.reloadData()
             }
@@ -61,59 +60,25 @@ class PokemonTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath)
         let pokemon = self.pokemons[indexPath.row]
             cell.textLabel?.text = pokemon.name
+            cell.detailTextLabel?.text = "\(pokemon.id!)"
+        
+        cell.imageView?.image = UIImage(named: "PH")
         
         //Info.plist -> App Transport Security Settings
         // Allow arbitary loads
-        let imageData = try! Data(contentsOf: URL(string: pokemon.imageURL)!)
-          cell.imageView?.image = UIImage(data: imageData)
+        //Need to download image in the background thread
+        
+        DispatchQueue.global().async {
+            let imageData = try! Data(contentsOf: URL(string: pokemon.imageURL)!)
+            
+            DispatchQueue.main.async {
+                cell.imageView?.image = UIImage(data: imageData)
+
+            }
+        }
+
         
         return cell
     }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

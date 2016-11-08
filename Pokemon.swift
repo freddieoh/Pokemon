@@ -8,13 +8,13 @@
 
 import UIKit
 
-
 //Create Pokemon class with attributes
 class Pokemon {
 
     var id: Int!
     var imageURL: String!
     var name: String!
-    
-    
+    var latitude: Double!
+    var longitude: Double! 
+
 }
