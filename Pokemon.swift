@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 //Create Pokemon class with attributes
 class Pokemon {
@@ -16,5 +17,5 @@ class Pokemon {
     var name: String!
     var latitude: Double!
     var longitude: Double! 
-
+    var record: CKRecord!
 }

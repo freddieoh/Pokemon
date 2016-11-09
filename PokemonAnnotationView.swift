@@ -16,9 +16,9 @@ class PokemonAnnotationView: MKAnnotationView {
         
         let pokemonAnnotation = annotation as! PokemonAnnotation
         
-        let imageData = try! Data(contentsOf: URL(string: pokemonAnnotation.pokemonPinImage)!)
+     //   let imageData = try! Data(contentsOf: URL(string: pokemonAnnotation.pokemonPinImage)!)
         
-        let image = UIImage(data: imageData)
+    //    let image = UIImage(data: imageData)
         let imageView = UIImageView(image:image)
         
         imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)

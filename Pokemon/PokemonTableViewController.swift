@@ -13,36 +13,25 @@ class PokemonTableViewController: UITableViewController {
     //Creates an array that holds objects of type Pokemon
     var pokemons: [Pokemon]!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Initalizes array
-        self.pokemons = [Pokemon]()
+//        self.pokemons = [Pokemon]()
+//            {
+//        
+//
+////        for item in result {
+////                
+////        let pokemon = Pokemon()
+////            pokemon.id = item["id"] as! Int!
+////            pokemon.name = item["name"] as! String!
+////            pokemon.imageURL = item["imageURL"] as! String!
+////                
+////            self.pokemons.append(pokemon)
+////        }
 
-        // Create JSON URL
-        let pokemonURL = "https://still-wave-26435.herokuapp.com/pokemon/all"
-        
-        //Create URL from JSON URL
-        let url = URL(string: pokemonURL)
-        URLSession.shared.dataTask(with: url!) { (data: Data?, response: URLResponse?, error: Error? ) in
-            
-        let result = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
-        // Loop JSON Result
-        for item in result {
-                
-        let pokemon = Pokemon()
-            pokemon.id = item["id"] as! Int!
-            pokemon.name = item["name"] as! String!
-            pokemon.imageURL = item["imageURL"] as! String!
-                
-            self.pokemons.append(pokemon)
-           
-            }
-            //Main is the UI Thread
-            DispatchQueue.main.sync {
-                self.tableView.reloadData()
-            }
-        }.resume()
     }
     
    override func didReceiveMemoryWarning() {

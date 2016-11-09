@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F01B4171DD25E96001E043F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F01B4161DD25E96001E043F /* CloudKit.framework */; };
 		1F1929A21DD1801F001FC972 /* AddNewPokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1929A11DD1801F001FC972 /* AddNewPokemonViewController.swift */; };
 		1F1929A41DD18073001FC972 /* pokebg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1F1929A31DD18073001FC972 /* pokebg.jpeg */; };
 		1F5652001DC9078900A0AB33 /* PokemonAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5651FF1DC9078900A0AB33 /* PokemonAnnotationView.swift */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F01B4141DD25E92001E043F /* Pokemon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pokemon.entitlements; sourceTree = "<group>"; };
+		1F01B4161DD25E96001E043F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		1F1929A11DD1801F001FC972 /* AddNewPokemonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPokemonViewController.swift; sourceTree = "<group>"; };
 		1F1929A31DD18073001FC972 /* pokebg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pokebg.jpeg; sourceTree = "<group>"; };
 		1F5651FF1DC9078900A0AB33 /* PokemonAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonAnnotationView.swift; sourceTree = "<group>"; };
@@ -43,12 +46,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F01B4171DD25E96001E043F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F01B4151DD25E96001E043F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F01B4161DD25E96001E043F /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1F1929A71DD180A3001FC972 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +81,7 @@
 				1F6BD0171DC7C95A002796F7 /* Controllers */,
 				1F6BD0021DC7C905002796F7 /* Pokemon */,
 				1F6BD0011DC7C905002796F7 /* Products */,
+				1F01B4151DD25E96001E043F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +96,7 @@
 		1F6BD0021DC7C905002796F7 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				1F01B4141DD25E92001E043F /* Pokemon.entitlements */,
 				1F6BD0031DC7C905002796F7 /* AppDelegate.swift */,
 				1F6BD00A1DC7C905002796F7 /* Assets.xcassets */,
 				1F6BD00C1DC7C905002796F7 /* LaunchScreen.storyboard */,
@@ -96,8 +110,8 @@
 			children = (
 				1F6BD0071DC7C905002796F7 /* Main.storyboard */,
 				1F5652031DC90DDA00A0AB33 /* PokemonMapsViewController.swift */,
-				1F6BD0151DC7C930002796F7 /* PokemonTableViewController.swift */,
 				1F1929A11DD1801F001FC972 /* AddNewPokemonViewController.swift */,
+				1F6BD0151DC7C930002796F7 /* PokemonTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +157,14 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 7E646DTM59;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -314,6 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pokemon/Pokemon.entitlements;
 				DEVELOPMENT_TEAM = 7E646DTM59;
 				INFOPLIST_FILE = Pokemon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -327,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pokemon/Pokemon.entitlements;
 				DEVELOPMENT_TEAM = 7E646DTM59;
 				INFOPLIST_FILE = Pokemon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
